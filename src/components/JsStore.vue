@@ -31,6 +31,9 @@
       <td>
         <button @click="find">find</button>
       </td>
+      <td>
+        <button @click="orFind">or find</button>
+      </td>
     </tr>
     <tr v-for="student in students" :key="student.id">
       <template v-if="editStudent!=null && editStudent.id==student.id">
@@ -70,7 +73,12 @@
 </template>
 <script>
 import { StudentService } from '@/indexdb/student'
-import { insert, findByExample, initJsStore } from '@/indexdb/idb_service'
+import {
+  insert,
+  findByExample,
+  initJsStore,
+  getOrFind
+} from '@/indexdb/idb_service'
 import { Global } from '../../src/global'
 export default {
   name: 'Student',
@@ -104,6 +112,9 @@ export default {
     this.refreshStudent()
   },
   methods: {
+    orFind() {
+      getOrFind()
+    },
     bukinsert() {
       insert()
     },

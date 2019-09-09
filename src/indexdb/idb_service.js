@@ -78,3 +78,19 @@ export const insert = async () => {
     return: true
   })
 }
+export const getOrFind = async () => {
+
+  var results = await connection.select({
+    from: 'Students',
+    where: {
+      country: 'ch',
+      city: 'sh',
+      or: {
+        gender: 1,
+        country: 'ch'
+      }
+    }
+  });
+  //results will be array of objects.
+  console.log(results);
+}
