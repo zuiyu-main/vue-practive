@@ -24,7 +24,12 @@ const getDatabase = () => {
       city: {
         dataType: DATA_TYPE.String,
         notNull: true
-      }
+      },
+      test: {
+        dataType: DATA_TYPE.Array,
+        notNull: true,
+        multiEntry: true
+      },
     }
   };
   const dataBase = {
@@ -42,9 +47,10 @@ export const findByExample = async () => {
   var results = await connection.select({
     from: 'Students',
     where: {
-      name: {
-        $regex: /name:/i
-      }
+      // name: {
+      //   $regex: /name:/i
+      // }
+      test: [{ id: 0 }]
     }
   });
   //results will be array of objects.
@@ -65,11 +71,21 @@ export const findByExample = async () => {
 };
 export const insert = async () => {
   const ar = []
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 100; i++) {
     ar.push({
       name: 'name:' + i,
       country: 'country:' + i,
-      city: 'city:' + i
+      city: 'city:' + i,
+      test: [
+        {
+          id: i,
+          name: 'child' + i
+        },
+        {
+          id: 'two' + i,
+          name: 'childtwo' + i
+        }
+      ]
     })
   }
   return await connection.insert({

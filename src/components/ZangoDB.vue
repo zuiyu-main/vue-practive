@@ -50,7 +50,7 @@ export default {
       let db = new zango.Db('mydb', { people: ['age'] })
       let people = db.collection('people')
       people
-        .find({ name: { $regex: /Geo/ } })
+        .find({ age: { $regex: /\*2/ } })
         .toArray()
         .then(res => {
           console.log('resres', res)
