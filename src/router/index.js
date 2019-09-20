@@ -9,6 +9,7 @@ import indexDB from '@/components/IndexDB'
 import jsstore from '@/components/JsStore'
 import ZangoDB from '@/components/ZangoDB'
 import MiNiMonogo from '@/components/MiNiMongo'
+import Stomp from '@/components/Stomp'
 Vue.use(Router)
 
 export default new Router({
@@ -57,7 +58,11 @@ export default new Router({
       path: '/minimongo',
       name: 'minimongo',
       component: MiNiMonogo
-
+    },
+    {
+      path: '/stomp',
+      name: 'stomp',
+      component: Stomp
     }
   ]
 })
