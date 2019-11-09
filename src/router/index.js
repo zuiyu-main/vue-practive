@@ -63,6 +63,11 @@ export default new Router({
       path: '/stomp',
       name: 'stomp',
       component: Stomp
+    },
+    {
+      path: '/eval',
+      name: 'eval',
+      component: () => import('@/components/eval')
     }
   ]
 })
