@@ -5,7 +5,8 @@ if (typeof WebSocket == 'undefined') {
   console.log('不支持websocket')
 }
 // 初始化 ws 对象
-var ws = new WebSocket('ws://127.0.0.1:15674/ws')
+// 8001 nginx代理请求
+var ws = new WebSocket('ws://127.0.0.1:8001/ws')
 // 获得Stomp client对象
 var stompClient = Stomp.over(ws)
 // 定义连接成功回调函数
